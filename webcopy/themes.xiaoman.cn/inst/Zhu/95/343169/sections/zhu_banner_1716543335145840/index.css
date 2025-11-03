@@ -1,0 +1,93 @@
+#zhuli-banner {
+  position: relative;
+}
+#zhuli-banner img {
+  width: 100%;
+}
+#zhuli-banner .visible-xs-block {
+  display: none;
+}
+#zhuli-banner .swiper-pagination-bullets {
+  bottom: 15px;
+}
+#zhuli-banner .swiper-pagination-bullet {
+  height: 16px;
+  width: 16px;
+  border: 2px solid #26ac39;
+  margin: 0 4px;
+  background: none;
+  border-radius: 50%;
+  opacity: 1;
+  box-sizing: border-box;
+  position: relative;
+}
+#zhuli-banner .swiper-pagination-bullet::after {
+  content: "";
+  display: none;
+  width: 8px;
+  height: 8px;
+  background: #26ac39;
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  border-radius: 50%;
+}
+#zhuli-banner .swiper-pagination-bullet-active {
+  border: 2px solid #26ac39;
+}
+#zhuli-banner .swiper-pagination-bullet-active::after {
+  display: block;
+}
+#zhuli-banner .swiper-button-prev,
+#zhuli-banner .swiper-button-next {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #2890ef;
+  margin-top: -20px;
+  text-align: center;
+}
+#zhuli-banner .swiper-button-prev i,
+#zhuli-banner .swiper-button-next i {
+  font-size: 23px;
+  line-height: 40px;
+  color: #fff;
+}
+#zhuli-banner .swiper-button-prev,
+#zhuli-banner .swiper-container-rtl .swiper-button-next {
+  left: 20px;
+  right: auto;
+}
+#zhuli-banner .swiper-button-next,
+#zhuli-banner .swiper-container-rtl .swiper-button-prev {
+  right: 20px;
+  left: auto;
+}
+#zhuli-banner .swiper-button-prev:hover,
+#zhuli-banner .swiper-button-next:hover {
+  background: #e34100;
+}
+
+@media screen and (max-width: 768px) {
+  #zhuli-banner::after {
+    display: none;
+  }
+  #zhuli-banner .swiper-pagination-bullet {
+    height: 12px;
+    width: 12px;
+    border: 1px solid #71b637;
+  }
+  #zhuli-banner .swiper-pagination-bullet::after {
+    width: 6px;
+    height: 6px;
+  }
+  #zhuli-banner .swiper-pagination-bullet-active {
+    border: 1px solid #71b637;
+  }
+  #zhuli-banner .hidden-xs {
+    display: none !important;
+  }
+  #zhuli-banner .visible-xs-block {
+    display: block !important;
+  }
+}

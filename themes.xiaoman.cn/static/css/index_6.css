@@ -1,0 +1,172 @@
+.zhuli-multi_cols {
+  padding: 100px 0 30px;
+}
+
+.zhuli-multi_cols .tit {
+  text-align: center;
+}
+.zhuli-multi_cols .tit h3 {
+  font-size: 60px;
+  line-height: 1;
+  color: var(--title-text-color);
+}
+.zhuli-multi_cols .tit h3 span {
+  font-family: var(--font-family);
+}
+.zhuli-multi_cols .tit p {
+  font-size: 18px;
+  line-height: 30px;
+  color: #595a59;
+  max-width: 90%;
+  margin: 13px auto 0;
+}
+
+.zhuli-multi_cols ul {
+  margin: 10px -22px 0;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.zhuli-multi_cols ul li {
+  width: 16.6666666%;
+  padding: 0 22px;
+  margin: 40px 0 0;
+  position: relative;
+  text-align: center;
+  cursor: pointer;
+}
+
+.zhuli-multi_cols ul li .pic {
+  width: 100%;
+  position: relative;
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.zhuli-multi_cols ul li .pic img {
+  width: 100%;
+  transition: all 0.3s ease 0s;
+}
+.zhuli-multi_cols ul li h6 {
+  margin: 20px 0 0;
+}
+.zhuli-multi_cols ul li h6 a {
+  font-size: 16px;
+  color: #434343;
+}
+.zhuli-multi_cols ul li:hover h6 a {
+  color: #22ac39;
+}
+.zhuli-multi_cols ul li:hover img {
+  transform: scale(1.08);
+  -webkit-transform: scale(1.08);
+}
+.zhuli-multi_cols ul li:hover .more {
+  color: #22ac39;
+}
+
+@media screen and (max-width: 1800px) {
+  .zhuli-multi_cols .tit h3 {
+    font-size: 56px;
+  }
+}
+
+@media screen and (max-width: 1700px) {
+  .zhuli-multi_cols .tit h3 {
+    font-size: 54px;
+  }
+}
+
+@media screen and (max-width: 1600px) {
+  .zhuli-multi_cols .tit h3 {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 1500px) {
+  .zhuli-multi_cols .tit h3 {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 1441px) {
+  .zhuli-multi_cols .tit h3 {
+    font-size: 46px;
+  }
+}
+
+@media screen and (max-width: 1367px) {
+  .zhuli-multi_cols .tit h3 {
+    font-size: 44px;
+  }
+}
+
+@media screen and (max-width: 1281px) {
+  .zhuli-multi_cols .tit h3 {
+    font-size: 40px;
+  }
+  .zhuli-multi_cols {
+    padding: 70px 0 30px;
+  }
+  .zhuli-multi_cols ul li {
+    padding: 0 12px;
+    margin: 30px 0 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .zhuli-multi_cols .tit h3 {
+    font-size: 26px;
+  }
+  .zhuli-multi_cols {
+    padding: 30px 0;
+  }
+  .zhuli-multi_cols .list {
+    margin: 30px 0 0;
+  }
+  .zhuli-multi_cols .swiper-slide h5 {
+    margin: 15px 0 0;
+    font-size: 16px;
+  }
+  .zhuli-multi_cols .swiper-button-prev,
+  .zhuli-multi_cols .swiper-button-next {
+    display: none;
+  }
+  .zhuli-multi_cols .swiper-pagination {
+    margin-top: 25px;
+  }
+  .zhuli-multi_cols .swiper-pagination-bullet {
+    height: 12px;
+    width: 12px;
+    border: 1px solid #fff;
+  }
+  .zhuli-multi_cols .swiper-pagination-bullet::after {
+    width: 6px;
+    height: 6px;
+    background: #fff;
+  }
+  .zhuli-multi_cols .swiper-pagination-bullet-active {
+    border: 1px solid #fff;
+  }
+
+  .zhuli-multi_cols ul {
+    margin: 10px -12px 0;
+  }
+  .zhuli-multi_cols ul li {
+    width: 33.333%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .zhuli-multi_cols .tit h3 {
+    font-size: 22px;
+  }
+  .zhuli-multi_cols .tit p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  .zhuli-multi_cols ul li {
+    width: 50%;
+  }
+}
