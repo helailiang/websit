@@ -44,6 +44,15 @@
   position: relative;
   text-align: center;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.zhuli-hot_product ul li .box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 .zhuli-hot_product ul li .pic {
@@ -51,23 +60,44 @@
   position: relative;
   display: block;
   overflow: hidden;
+  height: 0;
+  padding-bottom: 75%;
+  flex-shrink: 0;
 }
 .zhuli-hot_product ul li .pic img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
   transition: all 0.3s ease 0s;
 }
 .zhuli-hot_product ul li h6 {
-  padding: 20px 0;
+  padding: 20px 0 10px;
+  min-height: 60px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .zhuli-hot_product ul li h6 a {
   font-size: 20px;
   color: #000;
-  line-height: 1;
+  line-height: 1.3;
   font-family: var(--font-family);
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;
   -webkit-line-clamp: 3;
+  text-align: center;
+}
+.zhuli-hot_product ul li .product-desc {
+  flex: 1;
+  min-height: 72px;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 10px 10px 20px;
 }
 .zhuli-hot_product ul li:hover .box {
   box-shadow: 0px 30px 50px -26px rgba(16, 36, 94, 0.25);
@@ -151,9 +181,21 @@
     width: 50%;
     padding: 0 10px;
     margin: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .zhuli-hot_product ul li .box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
   }
   .zhuli-hot_product ul li h6 {
-    padding: 17px 0;
+    padding: 17px 0 10px;
+    min-height: 50px;
+  }
+  .zhuli-hot_product ul li .product-desc {
+    min-height: 60px;
+    padding: 10px 10px 17px;
   }
   .zhuli-hot_product ul li .more {
     line-height: 40px;
