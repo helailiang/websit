@@ -1,0 +1,31 @@
+{
+    "mcpServers": {
+
+        "word-document-server": {
+            "command": "E:\\python_workspase\\Office-Word-MCP-Server\\venv310\\Scripts\\python.exe",
+            "args": [
+                "E:\\python_workspase\\Office-Word-MCP-Server\\word_mcp_server.py"
+            ]
+        },
+        "excel": {
+            "command": "uvx",
+            "args": [
+                "excel-mcp-server",
+                "stdio"
+            ]
+        },
+        "playwright-extension": {
+            "command": "npx",
+            "args": ["@playwright/mcp@latest", "--extension"],
+            "env": {
+                "PLAYWRIGHT_MCP_EXTENSION_TOKEN": "WlG4JtOz8FHSnu4zBYZF2lT9y3rP5rhXYj2Xf6F5Qmc"
+            },
+            "enabled": true
+        },
+      "browser-tools": {
+        "command": "npx",
+        "args": [ "-y","@agentdeskai/browser-tools-mcp@1.2.0"],
+        "enabled": true
+      }
+    }
+  }
