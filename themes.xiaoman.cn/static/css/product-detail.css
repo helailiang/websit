@@ -1,0 +1,318 @@
+/* 产品详情页面样式 */
+.zhuli-product-detail {
+  padding: 80px 0;
+  position: relative;
+  background: #fff;
+  min-height: 600px;
+}
+
+.zhuli-product-detail .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 45px;
+}
+
+.zhuli-product-detail .product-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+/* 左侧图片区域 */
+.zhuli-product-detail .product-image {
+  flex: 0 0 48%;
+  position: relative;
+}
+
+.zhuli-product-detail .product-image .main-image {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f5f5f5;
+  margin-bottom: 20px;
+}
+
+.zhuli-product-detail .product-image .main-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* 缩略图导航 */
+.zhuli-product-detail .product-thumbnails {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-nav {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px solid var(--color-primary);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--color-primary);
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-nav:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-nav.prev {
+  margin-right: 10px;
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-nav.next {
+  margin-left: 10px;
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-list {
+  display: flex;
+  gap: 10px;
+  flex: 1;
+  justify-content: center;
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-item {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-item.active {
+  border-color: var(--color-primary);
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid var(--color-primary);
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-item.active::after {
+  opacity: 1;
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-item.active {
+  border-color: var(--color-primary);
+  position: relative;
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-item.active::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--color-primary);
+  z-index: 1;
+}
+
+.zhuli-product-detail .product-thumbnails .thumb-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 右侧产品信息 */
+.zhuli-product-detail .product-info {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.zhuli-product-detail .product-info .product-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--title-text-color);
+  line-height: 1.3;
+  margin-bottom: 40px;
+  font-family: var(--title-font-family);
+  word-wrap: break-word;
+}
+
+/* 产品规格表格 */
+.zhuli-product-detail .product-specs {
+  margin: 30px 0;
+}
+
+.zhuli-product-detail .product-specs table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+  color: #454545;
+}
+
+.zhuli-product-detail .product-specs table tbody tr {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.zhuli-product-detail .product-specs table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.zhuli-product-detail .product-specs table th {
+  padding: 14px 15px;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  width: 35%;
+  vertical-align: top;
+  font-size: 16px;
+}
+
+.zhuli-product-detail .product-specs table td {
+  padding: 14px 15px;
+  color: #666;
+  width: 65%;
+  font-size: 16px;
+}
+
+/* Get a Quote 按钮 */
+.zhuli-product-detail .product-actions {
+  margin-top: 40px;
+}
+
+.zhuli-product-detail .product-actions .btn-quote {
+  display: inline-block;
+  padding: 18px 60px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: var(--button-radius);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  text-decoration: none;
+  min-width: 200px;
+}
+
+.zhuli-product-detail .product-actions .btn-quote:hover {
+  background: var(--color-second);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 172, 57, 0.3);
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 1200px) {
+  .zhuli-product-detail .product-wrapper {
+    gap: 40px;
+  }
+  
+  .zhuli-product-detail .product-info .product-title {
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .zhuli-product-detail .product-wrapper {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .zhuli-product-detail .product-image {
+    flex: 1;
+    width: 100%;
+  }
+  
+  .zhuli-product-detail .product-info {
+    padding-left: 0;
+  }
+  
+  .zhuli-product-detail .product-info .product-title {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .zhuli-product-detail {
+    padding: 40px 0;
+  }
+  
+  .zhuli-product-detail .container {
+    padding: 0 20px;
+  }
+  
+  .zhuli-product-detail .product-info .product-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+  }
+  
+  .zhuli-product-detail .product-specs {
+    margin: 20px 0;
+  }
+  
+  .zhuli-product-detail .product-specs table {
+    font-size: 14px;
+  }
+  
+  .zhuli-product-detail .product-specs table th,
+  .zhuli-product-detail .product-specs table td {
+    padding: 10px 8px;
+  }
+  
+  .zhuli-product-detail .product-actions {
+    margin-top: 30px;
+  }
+  
+  .zhuli-product-detail .product-actions .btn-quote {
+    padding: 14px 40px;
+    font-size: 16px;
+    width: 100%;
+  }
+  
+  .zhuli-product-detail .product-thumbnails .thumb-item {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .zhuli-product-detail .product-thumbnails .thumb-nav {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .zhuli-product-detail .product-info .product-title {
+    font-size: 22px;
+  }
+  
+  .zhuli-product-detail .product-specs table {
+    font-size: 12px;
+  }
+  
+  .zhuli-product-detail .product-thumbnails .thumb-item {
+    width: 50px;
+    height: 50px;
+  }
+}
+
