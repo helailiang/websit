@@ -7,6 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title id="page-title">Product Detail - SAINT PETROCHEMICAL LIMITED</title>
     <meta name="description" content="Product detail page for SAINT PETROCHEMICAL LIMITED">
+    <meta name="keywords" content="pva glue, pva adhesive, adhesives pva, pva in glue, pva polymer, pva resin, VAM, VAE, PVA, chemical products">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://themes.xiaoman.cn/products/detail.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://themes.xiaoman.cn/products/detail.html">
+    <meta property="og:title" content="Product Detail - SAINT PETROCHEMICAL LIMITED">
+    <meta property="og:description" content="Professional chemical products including PVA glue, PVA adhesive, adhesives PVA, VAM, VAE Emulsion and more">
+    <meta property="og:image" content="https://themes.xiaoman.cn/static/picture/products/product-pva.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://themes.xiaoman.cn/products/detail.html">
+    <meta property="twitter:title" content="Product Detail - SAINT PETROCHEMICAL LIMITED">
+    <meta property="twitter:description" content="Professional chemical products including PVA glue, PVA adhesive, adhesives PVA, VAM, VAE Emulsion and more">
+    <meta property="twitter:image" content="https://themes.xiaoman.cn/static/picture/products/product-pva.jpg">
     <link rel="shortcut icon" href="../static/favicon.ico">
     <link rel="preconnect" href="https://shopcdnpro.grainajz.com">
 <!-- google analysis -->
@@ -266,7 +283,7 @@
           
           <!-- Get a Quote 按钮 -->
           <div class="product-actions">
-            <a href="../index.html#contact" class="btn-quote">Get a Quote</a>
+            <a href="javascript:void(0)" class="btn-quote" id="btn-get-quote">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -274,6 +291,47 @@
   </div>
 
           <!-- sectionEnd: zhu_product_detail -->
+        
+        <!-- Get a Quote 弹窗 -->
+        <div id="quote-modal" class="quote-modal">
+          <div class="quote-modal-overlay"></div>
+          <div class="quote-modal-content">
+            <div class="quote-modal-header">
+              <h3>Get a Quote</h3>
+              <button class="quote-modal-close" id="quote-modal-close">&times;</button>
+            </div>
+            <div class="quote-modal-body">
+              <form name="quoteform" method="post" action="javascript:void(0)" class="crm-form quote-form" data-use-emailjs="true">
+              
+                <input type="hidden" name="product_name" id="quote-product-name" value="">
+                <div class="form-group">
+                  <label for="quote-name">Name <span class="required">*</span></label>
+                  <input type="text" name="name" id="quote-name" class="form-control" required placeholder="Your Name">
+                </div>
+                <div class="form-group">
+                  <label for="quote-email">Email <span class="required">*</span></label>
+                  <input type="email" name="email" id="quote-email" class="form-control" required placeholder="Your Email">
+                </div>
+                <div class="form-group">
+                  <label for="quote-phone">Phone</label>
+                  <input type="tel" name="tel" id="quote-phone" class="form-control" placeholder="Your Phone">
+                </div>
+                <div class="form-group">
+                  <label for="quote-company">Company</label>
+                  <input type="text" name="company" id="quote-company" class="form-control" placeholder="Your Company">
+                </div>
+                <div class="form-group">
+                  <label for="quote-message">Message</label>
+                  <textarea name="message" id="quote-message" class="form-control" rows="4" placeholder="Your Message"></textarea>
+                </div>
+                <div class="form-group form-submit">
+                  <button type="submit" class="btn-submit create-form-submit">Submit</button>
+                  <button type="button" class="btn-send-email" id="btn-send-email">Send via Email</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
         
           <!-- sectionStart: zhu_foot -->
           
@@ -387,6 +445,21 @@
   <script type="text/javascript" src="../static/js/form.js" defer></script>
   <script type="text/javascript" src="../static/js/index.js" defer></script>
   
+  <!-- EmailJS 邮件服务集成（可选） -->
+  <!-- 取消注释以下行以启用 EmailJS 邮件发送功能 -->
+  <!-- 
+  <script>
+    // EmailJS 配置（需要从 https://www.emailjs.com/ 获取）
+    window.EMAILJS_CONFIG = {
+      PUBLIC_KEY: 'YOUR_PUBLIC_KEY',      // 替换为您的 Public Key
+      SERVICE_ID: 'YOUR_SERVICE_ID',      // 替换为您的 Service ID
+      TEMPLATE_ID: 'YOUR_TEMPLATE_ID',     // 替换为您的 Template ID
+      TO_EMAIL: 'INFO@SAINTPEC.COM'
+    };
+  </script>
+  -->
+  <script type="text/javascript" src="../static/js/emailjs-integration.js"></script>
+
   <!-- 产品详情页面JavaScript -->
   <script>
     // 产品数据配置
@@ -561,6 +634,18 @@
       return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
     }
 
+    // SEO关键词映射
+    const seoKeywords = {
+      'pva': 'pva glue, pva adhesive, adhesives pva, pva in glue, pva glue glue, pva polymer, pva resin, polyvinyl alcohol glue, water soluble pva, pva emulsion, pva solution',
+      'vae': 'VAE emulsion, adhesive emulsion, water based adhesive, emulsion adhesive, construction adhesive, vinyl acetate ethylene',
+      'vam': 'VAM, vinyl acetate, VAM monomer, chemical raw material, pva raw material, vae raw material, adhesive raw material',
+      'sebs': 'SEBS, Styrene-Ethylene-Butylene-Styrene, synthetic rubber, elastomer, automotive, medical',
+      'sbs': 'SBS, Styrene-Butadiene-Styrene, synthetic rubber, elastomer, footwear, asphalt',
+      'epoxy': 'Epoxy, Resin, thermosetting, coatings, composites, wind power',
+      'polyol': 'Polyether, Polyol, polyurethane, foam, elastomers, coatings',
+      'fiber': 'pva fiber, water soluble fiber, high tenacity fiber, pva synthetic fiber, textile fiber, construction fiber'
+    };
+
     // 初始化产品详情
     function initProductDetail() {
       const productId = getUrlParameter('product') || 'vam';
@@ -573,11 +658,21 @@
       }
 
       // 更新页面标题
-      document.getElementById('page-title').textContent = product.title + ' - SAINT PETROCHEMICAL LIMITED';
-      document.querySelector('h1').textContent = product.title + ' - SAINT PETROCHEMICAL LIMITED';
+      const pageTitle = product.title + ' - SAINT PETROCHEMICAL LIMITED';
+      document.getElementById('page-title').textContent = pageTitle;
+      document.querySelector('h1').textContent = pageTitle;
+      
+      // 动态更新SEO标签
+      updateSEO(product, productId);
 
       // 更新产品标题
       document.getElementById('product-title').textContent = product.title;
+      
+      // 设置报价表单中的产品名称
+      const productNameInput = document.getElementById('quote-product-name');
+      if (productNameInput) {
+        productNameInput.value = product.title;
+      }
 
       // 更新主图片
       const mainImage = document.getElementById('main-product-image');
@@ -610,6 +705,84 @@
         `;
         specsTable.appendChild(row);
       }
+    }
+    
+    // 更新SEO标签
+    function updateSEO(product, productId) {
+      const keywords = seoKeywords[productId] || 'chemical products';
+      const description = product.description || 'Professional chemical product from SAINT PETROCHEMICAL LIMITED';
+      const title = product.title + ' - SAINT PETROCHEMICAL LIMITED';
+      const url = window.location.href;
+      const image = product.images && product.images[0] ? 
+        (product.images[0].startsWith('http') ? product.images[0] : 'https://themes.xiaoman.cn/' + product.images[0].replace('../', '')) : 
+        'https://themes.xiaoman.cn/static/picture/products/product-' + productId + '.jpg';
+      
+      // 更新meta标签
+      const descMeta = document.querySelector('meta[name="description"]');
+      const keywordsMeta = document.querySelector('meta[name="keywords"]');
+      const canonicalLink = document.querySelector('link[rel="canonical"]');
+      
+      if (descMeta) descMeta.setAttribute('content', description);
+      if (keywordsMeta) keywordsMeta.setAttribute('content', keywords);
+      if (canonicalLink) canonicalLink.setAttribute('href', url);
+      
+      // 更新Open Graph标签
+      const ogTitle = document.querySelector('meta[property="og:title"]');
+      const ogDesc = document.querySelector('meta[property="og:description"]');
+      const ogUrl = document.querySelector('meta[property="og:url"]');
+      const ogImage = document.querySelector('meta[property="og:image"]');
+      
+      if (ogTitle) ogTitle.setAttribute('content', title);
+      if (ogDesc) ogDesc.setAttribute('content', description);
+      if (ogUrl) ogUrl.setAttribute('content', url);
+      if (ogImage) ogImage.setAttribute('content', image);
+      
+      // 更新Twitter标签
+      const twTitle = document.querySelector('meta[property="twitter:title"]');
+      const twDesc = document.querySelector('meta[property="twitter:description"]');
+      const twUrl = document.querySelector('meta[property="twitter:url"]');
+      const twImage = document.querySelector('meta[property="twitter:image"]');
+      
+      if (twTitle) twTitle.setAttribute('content', title);
+      if (twDesc) twDesc.setAttribute('content', description);
+      if (twUrl) twUrl.setAttribute('content', url);
+      if (twImage) twImage.setAttribute('content', image);
+      
+      // 添加结构化数据
+      addProductSchema(product, productId, image);
+    }
+    
+    // 添加产品结构化数据
+    function addProductSchema(product, productId, image) {
+      // 移除旧的schema（如果存在）
+      const oldSchema = document.querySelector('script[type="application/ld+json"]');
+      if (oldSchema && oldSchema.textContent.includes('"@type":"Product"')) {
+        oldSchema.remove();
+      }
+      
+      const schema = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": product.title,
+        "description": product.description,
+        "image": image,
+        "brand": {
+          "@type": "Brand",
+          "name": "SAINT PETROCHEMICAL LIMITED"
+        },
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/InStock",
+          "priceCurrency": "USD"
+        },
+        "category": "Chemical Products",
+        "keywords": seoKeywords[productId] || ""
+      };
+      
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.textContent = JSON.stringify(schema);
+      document.head.appendChild(script);
     }
 
     // 切换主图片
@@ -659,9 +832,106 @@
       });
     }
     
+    // 弹窗控制
+    function initQuoteModal() {
+      const btnGetQuote = document.getElementById('btn-get-quote');
+      const modal = document.getElementById('quote-modal');
+      const closeBtn = document.getElementById('quote-modal-close');
+      const overlay = document.querySelector('.quote-modal-overlay');
+      
+      // 打开弹窗
+      if (btnGetQuote) {
+        btnGetQuote.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      }
+      
+      // 关闭弹窗
+      function closeModal() {
+        if (modal) {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+      }
+      
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+      }
+      
+      if (overlay) {
+        overlay.addEventListener('click', closeModal);
+      }
+      
+      // ESC键关闭弹窗
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+      
+      // 监听表单提交成功事件，关闭弹窗
+      const quoteForm = document.querySelector('.quote-form');
+      if (quoteForm) {
+        quoteForm.addEventListener('submit', function(e) {
+          // 表单提交由form.js处理
+          // 监听成功消息，延迟关闭弹窗
+          setTimeout(function() {
+            const successMsg = document.querySelector('#crmMailMask');
+            if (successMsg && successMsg.textContent.includes('Succesfully')) {
+              setTimeout(function() {
+                closeModal();
+              }, 1000);
+            }
+          }, 500);
+        });
+      }
+      
+      // 添加通过邮件客户端发送邮件的功能
+      const btnSendEmail = document.getElementById('btn-send-email');
+      if (btnSendEmail) {
+        btnSendEmail.addEventListener('click', function() {
+          const form = document.querySelector('.quote-form');
+          if (!form) return;
+          
+          const name = form.querySelector('#quote-name').value || '';
+          const email = form.querySelector('#quote-email').value || '';
+          const phone = form.querySelector('#quote-phone').value || '';
+          const company = form.querySelector('#quote-company').value || '';
+          const message = form.querySelector('#quote-message').value || '';
+          const productName = form.querySelector('#quote-product-name').value || 'Product Inquiry';
+          
+          // 构建邮件内容
+          const subject = encodeURIComponent('Quote Request for ' + productName);
+          const body = encodeURIComponent(
+            'Dear Sir/Madam,\n\n' +
+            'I would like to request a quote for the following product:\n\n' +
+            'Product: ' + productName + '\n' +
+            (name ? 'Name: ' + name + '\n' : '') +
+            (email ? 'Email: ' + email + '\n' : '') +
+            (phone ? 'Phone: ' + phone + '\n' : '') +
+            (company ? 'Company: ' + company + '\n' : '') +
+            (message ? '\nMessage:\n' + message + '\n' : '') +
+            '\n\nThank you for your attention.\n\nBest regards'
+          );
+          
+          // 打开邮件客户端
+          const mailtoLink = 'mailto:INFO@SAINTPEC.COM?subject=' + subject + '&body=' + body;
+          window.location.href = mailtoLink;
+          
+          // 可选：关闭弹窗
+          // closeModal();
+        });
+      }
+    }
+    
     // 页面加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
       initProductDetail();
+      initQuoteModal();
     });
   </script>
 </body>

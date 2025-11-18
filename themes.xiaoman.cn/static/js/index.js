@@ -24,9 +24,23 @@ $(function () {
   });
 
   // 顶部搜索栏提交搜索请求
-  $('.search-box-only .submit_btn').click(function () {
-    var formData = $(this).parents('.search-box-only').find('form').serialize();
-    window.location.href = `/search?${formData}`;
+  $('.search-box-only .submit_btn').click(function (e) {
+    e.preventDefault();
+    var form = $(this).parents('.search-box-only').find('form');
+    var searchQuery = form.find('input[name="keys"]').val();
+    if (searchQuery && searchQuery.trim() !== '') {
+      window.location.href = `search.html?keys=${encodeURIComponent(searchQuery.trim())}`;
+    } else {
+      window.location.href = 'search.html';
+    }
+  });
+  
+  // 支持回车键搜索
+  $('.search-box-only input[name="keys"]').on('keypress', function(e) {
+    if (e.which === 13) {
+      e.preventDefault();
+      $('.search-box-only .submit_btn').click();
+    }
   });
 
   // 语言切换
@@ -45,14 +59,14 @@ $(function () {
     $(".zhuli-header-lang .box em").text(lang.toUpperCase());
   }
 
-  // $(window).scroll(function(){
-  // 	//console.log($(this).scrollTop());
-  // 	if($(this).scrollTop()>0 && window.innerWidth < 766){
-  // 		$("body:not(.no-fix) .header-rightint2").addClass("header-fix");
-  // 	}else{
-  // 		$("body:not(.no-fix) .header-rightint2").removeClass("header-fix");
-  // 	}
-  // });
+  // TOP按钮 - 滚动到顶部
+  $("#gotop").click(function(e) {
+    e.preventDefault();
+    $('html, body').animate({
+      scrollTop: 0
+    }, 600, 'swing');
+    return false;
+  });
 });
 ;
 $(function () {
