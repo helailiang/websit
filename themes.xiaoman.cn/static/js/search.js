@@ -11,21 +11,35 @@
       name: 'VAM (Vinyl Acetate Monomer)',
       category: 'Organic Chemical',
       description: 'Vinyl Acetate Monomer is a key raw material for producing VAE emulsion, PVA, and other chemical products. Widely used in adhesives, coatings, and textile industries.',
-      keywords: ['VAM', 'Vinyl Acetate Monomer', 'organic chemical', 'adhesives', 'coatings', 'textile']
+      keywords: [
+        'VAM', 'Vinyl Acetate Monomer', 'organic chemical', 'adhesives', 'coatings', 'textile',
+        'vinyl acetate', 'VAM monomer', 'chemical raw material', 'pva raw material',
+        'vae raw material', 'adhesive raw material'
+      ]
     },
     {
       id: 'vae',
       name: 'VAE Emulsion',
       category: 'Organic Chemical',
       description: 'Water-based emulsion polymer with excellent adhesion, flexibility, and environmental friendliness. Ideal for adhesives, coatings, and construction materials.',
-      keywords: ['VAE', 'Emulsion', 'water-based', 'adhesives', 'coatings', 'construction']
+      keywords: [
+        'VAE', 'Emulsion', 'water-based', 'adhesives', 'coatings', 'construction',
+        'VAE emulsion', 'vinyl acetate ethylene', 'pva emulsion', 'adhesive emulsion',
+        'water based adhesive', 'emulsion adhesive', 'construction adhesive'
+      ]
     },
     {
       id: 'pva',
       name: 'PVA (Polyvinyl Alcohol)',
       category: 'Synthetic Resin',
       description: 'Water-soluble synthetic polymer with excellent film-forming properties. Used in textiles, paper, adhesives, and packaging industries.',
-      keywords: ['PVA', 'Polyvinyl Alcohol', 'synthetic resin', 'textiles', 'paper', 'packaging']
+      keywords: [
+        'PVA', 'Polyvinyl Alcohol', 'synthetic resin', 'textiles', 'paper', 'packaging',
+        // 高搜索量关键词（基于关键词研究）
+        'pva glue', 'pva in glue', 'pva glue glue', 'adhesives pva',
+        'pva adhesive', 'pva binder', 'water soluble pva', 'pva polymer',
+        'pva resin', 'polyvinyl alcohol glue', 'pva emulsion', 'pva solution'
+      ]
     },
     {
       id: 'sebs',
@@ -60,11 +74,15 @@
       name: 'Synthetic Fiber (PVA Fiber)',
       category: 'Synthetic Fiber',
       description: 'High-performance water-soluble and high-tenacity PVA fibers. Used in textiles, construction, and specialty applications.',
-      keywords: ['Synthetic Fiber', 'PVA Fiber', 'water-soluble', 'textiles', 'construction']
+      keywords: [
+        'Synthetic Fiber', 'PVA Fiber', 'water-soluble', 'textiles', 'construction',
+        'pva fiber', 'water soluble fiber', 'high tenacity fiber', 'pva synthetic fiber',
+        'textile fiber', 'construction fiber'
+      ]
     }
   ];
 
-  // 搜索函数
+  // 搜索函数 - 优化以支持关键词研究中的热门搜索词
   function searchProducts(query) {
     if (!query || query.trim() === '') {
       return products;
@@ -74,45 +92,84 @@
     const results = [];
 
     products.forEach(product => {
-      // 搜索产品名称
+      let matchScore = 0;
+      let matched = false;
+
+      // 1. 精确匹配产品名称（最高优先级）
+      if (product.name.toLowerCase() === searchTerm) {
+        results.push({ ...product, matchScore: 100 });
+        return;
+      }
+
+      // 2. 产品名称包含搜索词
       if (product.name.toLowerCase().includes(searchTerm)) {
-        results.push({ ...product, matchScore: 10 });
-        return;
+        matchScore = 90;
+        matched = true;
       }
 
-      // 搜索分类
-      if (product.category.toLowerCase().includes(searchTerm)) {
-        results.push({ ...product, matchScore: 8 });
-        return;
-      }
-
-      // 搜索描述
-      if (product.description.toLowerCase().includes(searchTerm)) {
-        results.push({ ...product, matchScore: 6 });
-        return;
-      }
-
-      // 搜索关键词
-      const keywordMatch = product.keywords.some(keyword => 
-        keyword.toLowerCase().includes(searchTerm)
+      // 3. 关键词精确匹配（高优先级）
+      const exactKeywordMatch = product.keywords.some(keyword => 
+        keyword.toLowerCase() === searchTerm
       );
-      if (keywordMatch) {
-        results.push({ ...product, matchScore: 5 });
-        return;
+      if (exactKeywordMatch) {
+        matchScore = Math.max(matchScore, 85);
+        matched = true;
       }
 
-      // 部分匹配
-      const words = searchTerm.split(/\s+/);
-      let matchCount = 0;
-      words.forEach(word => {
+      // 4. 关键词包含匹配
+      const keywordMatch = product.keywords.some(keyword => 
+        keyword.toLowerCase().includes(searchTerm) || searchTerm.includes(keyword.toLowerCase())
+      );
+      if (keywordMatch && !matched) {
+        matchScore = Math.max(matchScore, 70);
+        matched = true;
+      }
+
+      // 5. 分类匹配
+      if (product.category.toLowerCase().includes(searchTerm)) {
+        matchScore = Math.max(matchScore, 60);
+        matched = true;
+      }
+
+      // 6. 描述匹配
+      if (product.description.toLowerCase().includes(searchTerm)) {
+        matchScore = Math.max(matchScore, 50);
+        matched = true;
+      }
+
+      // 7. 多词匹配（支持 "pva glue" 这样的复合词）
+      const words = searchTerm.split(/\s+/).filter(w => w.length > 0);
+      if (words.length > 1) {
+        let wordMatchCount = 0;
+        words.forEach(word => {
+          if (product.name.toLowerCase().includes(word) ||
+              product.description.toLowerCase().includes(word) ||
+              product.keywords.some(k => k.toLowerCase().includes(word)) ||
+              product.category.toLowerCase().includes(word)) {
+            wordMatchCount++;
+          }
+        });
+        if (wordMatchCount > 0) {
+          // 匹配的词越多，分数越高
+          matchScore = Math.max(matchScore, 40 + (wordMatchCount * 10));
+          matched = true;
+        }
+      } else if (words.length === 1) {
+        // 单词部分匹配
+        const word = words[0];
         if (product.name.toLowerCase().includes(word) ||
             product.description.toLowerCase().includes(word) ||
-            product.keywords.some(k => k.toLowerCase().includes(word))) {
-          matchCount++;
+            product.keywords.some(k => k.toLowerCase().includes(word)) ||
+            product.category.toLowerCase().includes(word)) {
+          if (!matched) {
+            matchScore = 30;
+            matched = true;
+          }
         }
-      });
-      if (matchCount > 0) {
-        results.push({ ...product, matchScore: matchCount });
+      }
+
+      if (matched && matchScore > 0) {
+        results.push({ ...product, matchScore });
       }
     });
 

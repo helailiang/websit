@@ -149,7 +149,7 @@
           // 重置表单
           quoteForm.reset();
           
-          // 可选：关闭弹窗
+          // 关闭弹窗
           setTimeout(function() {
             const modal = document.getElementById('quote-modal');
             if (modal) {

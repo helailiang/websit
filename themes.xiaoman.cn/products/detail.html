@@ -9,21 +9,21 @@
     <meta name="description" content="Product detail page for SAINT PETROCHEMICAL LIMITED">
     <meta name="keywords" content="pva glue, pva adhesive, adhesives pva, pva in glue, pva polymer, pva resin, VAM, VAE, PVA, chemical products">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://themes.xiaoman.cn/products/detail.html">
+    <link rel="canonical" href="" id="canonical-link">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="product">
-    <meta property="og:url" content="https://themes.xiaoman.cn/products/detail.html">
+    <meta property="og:url" content="" id="og-url">
     <meta property="og:title" content="Product Detail - SAINT PETROCHEMICAL LIMITED">
     <meta property="og:description" content="Professional chemical products including PVA glue, PVA adhesive, adhesives PVA, VAM, VAE Emulsion and more">
-    <meta property="og:image" content="https://themes.xiaoman.cn/static/picture/products/product-pva.jpg">
+    <meta property="og:image" content="" id="og-image">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://themes.xiaoman.cn/products/detail.html">
+    <meta property="twitter:url" content="" id="twitter-url">
     <meta property="twitter:title" content="Product Detail - SAINT PETROCHEMICAL LIMITED">
     <meta property="twitter:description" content="Professional chemical products including PVA glue, PVA adhesive, adhesives PVA, VAM, VAE Emulsion and more">
-    <meta property="twitter:image" content="https://themes.xiaoman.cn/static/picture/products/product-pva.jpg">
+    <meta property="twitter:image" content="" id="twitter-image">
     <link rel="shortcut icon" href="../static/favicon.ico">
     <link rel="preconnect" href="https://shopcdnpro.grainajz.com">
 <!-- google analysis -->
@@ -713,9 +713,13 @@
       const description = product.description || 'Professional chemical product from SAINT PETROCHEMICAL LIMITED';
       const title = product.title + ' - SAINT PETROCHEMICAL LIMITED';
       const url = window.location.href;
+      // 动态获取base URL
+      const baseUrl = window.location.origin + window.location.pathname.split('/').slice(0, -1).join('/');
+      const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
+      
       const image = product.images && product.images[0] ? 
-        (product.images[0].startsWith('http') ? product.images[0] : 'https://themes.xiaoman.cn/' + product.images[0].replace('../', '')) : 
-        'https://themes.xiaoman.cn/static/picture/products/product-' + productId + '.jpg';
+        (product.images[0].startsWith('http') ? product.images[0] : window.location.origin + (basePath ? basePath + '/' : '/') + product.images[0].replace('../', '')) : 
+        window.location.origin + (basePath ? basePath + '/' : '/') + 'static/picture/products/product-' + productId + '.jpg';
       
       // 更新meta标签
       const descMeta = document.querySelector('meta[name="description"]');
@@ -873,21 +877,26 @@
         }
       });
       
-      // 监听表单提交成功事件，关闭弹窗
+      // 监听表单提交成功事件，关闭弹窗（仅用于原有API方式，EmailJS有自己的关闭逻辑）
       const quoteForm = document.querySelector('.quote-form');
       if (quoteForm) {
-        quoteForm.addEventListener('submit', function(e) {
-          // 表单提交由form.js处理
-          // 监听成功消息，延迟关闭弹窗
-          setTimeout(function() {
-            const successMsg = document.querySelector('#crmMailMask');
-            if (successMsg && successMsg.textContent.includes('Succesfully')) {
-              setTimeout(function() {
-                closeModal();
-              }, 1000);
-            }
-          }, 500);
-        });
+        // 检查是否使用EmailJS
+        const useEmailJS = quoteForm.getAttribute('data-use-emailjs');
+        // 如果不使用EmailJS，则监听原有API的成功消息
+        if (!useEmailJS || useEmailJS === 'false') {
+          quoteForm.addEventListener('submit', function(e) {
+            // 表单提交由form.js处理
+            // 监听成功消息，延迟关闭弹窗
+            setTimeout(function() {
+              const successMsg = document.querySelector('#crmMailMask');
+              if (successMsg && successMsg.textContent.includes('Succesfully')) {
+                setTimeout(function() {
+                  closeModal();
+                }, 1000);
+              }
+            }, 500);
+          });
+        }
       }
       
       // 添加通过邮件客户端发送邮件的功能
@@ -928,8 +937,46 @@
       }
     }
     
+    // 动态设置URL（替换themes.xiaoman.cn）
+    function setDynamicUrls() {
+      const fullUrl = window.location.href;
+      const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
+      
+      // 设置canonical链接
+      const canonicalLink = document.getElementById('canonical-link');
+      if (canonicalLink) {
+        canonicalLink.href = fullUrl;
+      }
+      
+      // 设置Open Graph URL
+      const ogUrl = document.getElementById('og-url');
+      if (ogUrl) {
+        ogUrl.content = fullUrl;
+      }
+      
+      // 设置Twitter URL
+      const twitterUrl = document.getElementById('twitter-url');
+      if (twitterUrl) {
+        twitterUrl.content = fullUrl;
+      }
+      
+      // 设置图片URL（默认使用PVA产品图片）
+      const ogImage = document.getElementById('og-image');
+      const twitterImage = document.getElementById('twitter-image');
+      const imagePath = 'static/picture/products/product-pva.jpg';
+      const fullImageUrl = window.location.origin + (basePath ? basePath + '/' : '/') + imagePath;
+      
+      if (ogImage) {
+        ogImage.content = fullImageUrl;
+      }
+      if (twitterImage) {
+        twitterImage.content = fullImageUrl;
+      }
+    }
+    
     // 页面加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
+      setDynamicUrls();
       initProductDetail();
       initQuoteModal();
     });

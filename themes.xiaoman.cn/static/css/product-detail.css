@@ -316,3 +316,236 @@
   }
 }
 
+/* Get a Quote 弹窗样式 */
+.quote-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  overflow-y: auto;
+}
+
+.quote-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.quote-modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  z-index: 10001;
+  margin: 20px;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quote-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 30px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.quote-modal-header h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--title-text-color);
+  margin: 0;
+  font-family: var(--title-font-family);
+}
+
+.quote-modal-close {
+  background: none;
+  border: none;
+  font-size: 32px;
+  color: #999;
+  cursor: pointer;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  line-height: 32px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.quote-modal-close:hover {
+  background: #f5f5f5;
+  color: #333;
+}
+
+.quote-modal-body {
+  padding: 30px;
+}
+
+.quote-form .form-group {
+  margin-bottom: 24px;
+}
+
+.quote-form .form-group label {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.quote-form .form-group label .required {
+  color: #e74c3c;
+  margin-left: 4px;
+}
+
+.quote-form .form-control {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.quote-form .form-control:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 172, 57, 0.1);
+}
+
+.quote-form textarea.form-control {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.quote-form .form-submit {
+  margin-top: 32px;
+  margin-bottom: 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.quote-form .btn-submit {
+  flex: 1;
+  min-width: 150px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--button-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quote-form .btn-submit:hover {
+  background: var(--color-second);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 172, 57, 0.3);
+}
+
+.quote-form .btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.quote-form .btn-send-email {
+  flex: 1;
+  min-width: 150px;
+  padding: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  background: #fff;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--button-radius);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quote-form .btn-send-email:hover {
+  background: var(--color-primary);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 172, 57, 0.3);
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+  .quote-modal-content {
+    width: 95%;
+    margin: 10px;
+  }
+  
+  .quote-modal-header {
+    padding: 20px;
+  }
+  
+  .quote-modal-header h3 {
+    font-size: 24px;
+  }
+  
+  .quote-modal-body {
+    padding: 20px;
+  }
+  
+  .quote-form .form-group {
+    margin-bottom: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .quote-modal-header h3 {
+    font-size: 20px;
+  }
+  
+  .quote-form .form-control {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+  
+  .quote-form .form-submit {
+    flex-direction: column;
+  }
+  
+  .quote-form .btn-submit,
+  .quote-form .btn-send-email {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+  }
+}
+

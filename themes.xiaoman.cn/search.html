@@ -5,8 +5,25 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Search Products - SAINT PETROCHEMICAL LIMITED</title>
-    <meta name="description" content="Search for chemical products at SAINT PETROCHEMICAL LIMITED">
+    <title>Search PVA Glue, PVA Adhesive & Chemical Products - SAINT PETROCHEMICAL LIMITED</title>
+    <meta name="description" content="Search for PVA glue, PVA adhesive, adhesives PVA, VAM, VAE Emulsion, and other chemical products. Find high-quality PVA polymer, PVA resin, and water-soluble PVA solutions.">
+    <meta name="keywords" content="pva glue, pva adhesive, adhesives pva, pva in glue, pva glue glue, pva polymer, pva resin, polyvinyl alcohol glue, water soluble pva, search chemical products">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="" id="canonical-link">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="" id="og-url">
+    <meta property="og:title" content="Search PVA Glue, PVA Adhesive & Chemical Products - SAINT PETROCHEMICAL LIMITED">
+    <meta property="og:description" content="Search for PVA glue, PVA adhesive, adhesives PVA, VAM, VAE Emulsion, and other chemical products.">
+    <meta property="og:image" content="" id="og-image">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="" id="twitter-url">
+    <meta property="twitter:title" content="Search PVA Glue, PVA Adhesive & Chemical Products - SAINT PETROCHEMICAL LIMITED">
+    <meta property="twitter:description" content="Search for PVA glue, PVA adhesive, adhesives PVA, VAM, VAE Emulsion, and other chemical products.">
+    <meta property="twitter:image" content="" id="twitter-image">
     <link rel="shortcut icon" href="static/favicon.ico">
     <link rel="preconnect" href="https://shopcdnpro.grainajz.com">
 <!-- google analysis -->
@@ -562,6 +579,43 @@
         window.location.href = `search.html?keys=${encodeURIComponent(query)}`;
       }
     });
+    
+    // 动态设置URL（替换themes.xiaoman.cn）
+    (function() {
+      const fullUrl = window.location.href;
+      const basePath = window.location.pathname.split('/').slice(0, -1).join('/') || '';
+      
+      // 设置canonical链接
+      const canonicalLink = document.getElementById('canonical-link');
+      if (canonicalLink) {
+        canonicalLink.href = fullUrl;
+      }
+      
+      // 设置Open Graph URL
+      const ogUrl = document.getElementById('og-url');
+      if (ogUrl) {
+        ogUrl.content = fullUrl;
+      }
+      
+      // 设置Twitter URL
+      const twitterUrl = document.getElementById('twitter-url');
+      if (twitterUrl) {
+        twitterUrl.content = fullUrl;
+      }
+      
+      // 设置图片URL
+      const ogImage = document.getElementById('og-image');
+      const twitterImage = document.getElementById('twitter-image');
+      const imagePath = 'static/picture/products/product-pva.jpg';
+      const fullImageUrl = window.location.origin + (basePath ? basePath + '/' : '/') + imagePath;
+      
+      if (ogImage) {
+        ogImage.content = fullImageUrl;
+      }
+      if (twitterImage) {
+        twitterImage.content = fullImageUrl;
+      }
+    })();
   </script>
 </body>
 </html>
