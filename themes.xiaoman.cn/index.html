@@ -477,6 +477,7 @@
                 "description": "Water-soluble synthetic polymer with excellent film-forming properties. Used in textiles, paper, adhesives, and packaging industries.",
                 "category": "Synthetic Resin",
                 "keywords": "pva glue, pva adhesive, adhesives pva, pva in glue, pva polymer, pva resin, polyvinyl alcohol glue, water soluble pva",
+                "image": "",
                 "offers": {
                   "@type": "Offer",
                   "availability": "https://schema.org/InStock",
@@ -502,6 +503,7 @@
                 "description": "Water-based emulsion polymer with excellent adhesion, flexibility, and environmental friendliness.",
                 "category": "Organic Chemical",
                 "keywords": "VAE emulsion, adhesive emulsion, water based adhesive",
+                "image": "",
                 "offers": {
                   "@type": "Offer",
                   "availability": "https://schema.org/InStock",
@@ -527,6 +529,7 @@
                 "description": "Key raw material for producing VAE emulsion, PVA, and other chemical products.",
                 "category": "Organic Chemical",
                 "keywords": "VAM, vinyl acetate, chemical raw material",
+                "image": "",
                 "offers": {
                   "@type": "Offer",
                   "availability": "https://schema.org/InStock",
@@ -1969,6 +1972,24 @@
             if (schema.logo === '') {
               const logoPath = 'static/picture/saint-logo.jpg';
               schema.logo = window.location.origin + (basePath ? basePath + '/' : '/') + logoPath;
+            }
+            // 更新产品图片路径
+            if (schema.hasOfferCatalog && schema.hasOfferCatalog.itemListElement) {
+              const productImages = {
+                'PVA (Polyvinyl Alcohol)': 'static/picture/products/product-pva.jpg',
+                'VAE Emulsion': 'static/picture/products/product-vae.jpg',
+                'VAM (Vinyl Acetate Monomer)': 'static/picture/products/product-vam.jpg'
+              };
+              
+              schema.hasOfferCatalog.itemListElement.forEach(item => {
+                if (item.itemOffered && item.itemOffered.image === '') {
+                  const productName = item.itemOffered.name;
+                  const imagePath = productImages[productName];
+                  if (imagePath) {
+                    item.itemOffered.image = window.location.origin + (basePath ? basePath + '/' : '/') + imagePath;
+                  }
+                }
+              });
             }
             schemaScript.textContent = JSON.stringify(schema, null, 2);
           } catch(e) {
