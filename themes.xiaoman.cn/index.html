@@ -476,7 +476,22 @@
                 "name": "PVA (Polyvinyl Alcohol)",
                 "description": "Water-soluble synthetic polymer with excellent film-forming properties. Used in textiles, paper, adhesives, and packaging industries.",
                 "category": "Synthetic Resin",
-                "keywords": "pva glue, pva adhesive, adhesives pva, pva in glue, pva polymer, pva resin, polyvinyl alcohol glue, water soluble pva"
+                "keywords": "pva glue, pva adhesive, adhesives pva, pva in glue, pva polymer, pva resin, polyvinyl alcohol glue, water soluble pva",
+                "offers": {
+                  "@type": "Offer",
+                  "availability": "https://schema.org/InStock",
+                  "priceCurrency": "USD",
+                  "price": "0",
+                  "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                  },
+                  "seller": {
+                    "@type": "Organization",
+                    "name": "SAINT PETROCHEMICAL LIMITED"
+                  }
+                }
               }
             },
             {
@@ -486,7 +501,22 @@
                 "name": "VAE Emulsion",
                 "description": "Water-based emulsion polymer with excellent adhesion, flexibility, and environmental friendliness.",
                 "category": "Organic Chemical",
-                "keywords": "VAE emulsion, adhesive emulsion, water based adhesive"
+                "keywords": "VAE emulsion, adhesive emulsion, water based adhesive",
+                "offers": {
+                  "@type": "Offer",
+                  "availability": "https://schema.org/InStock",
+                  "priceCurrency": "USD",
+                  "price": "0",
+                  "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                  },
+                  "seller": {
+                    "@type": "Organization",
+                    "name": "SAINT PETROCHEMICAL LIMITED"
+                  }
+                }
               }
             },
             {
@@ -496,7 +526,22 @@
                 "name": "VAM (Vinyl Acetate Monomer)",
                 "description": "Key raw material for producing VAE emulsion, PVA, and other chemical products.",
                 "category": "Organic Chemical",
-                "keywords": "VAM, vinyl acetate, chemical raw material"
+                "keywords": "VAM, vinyl acetate, chemical raw material",
+                "offers": {
+                  "@type": "Offer",
+                  "availability": "https://schema.org/InStock",
+                  "priceCurrency": "USD",
+                  "price": "0",
+                  "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                  },
+                  "seller": {
+                    "@type": "Organization",
+                    "name": "SAINT PETROCHEMICAL LIMITED"
+                  }
+                }
               }
             }
           ]
@@ -1868,50 +1913,6 @@
       });
     </script>
 
-    <script src="static/js/okki.sen.837.js" defer></script>
-    <script>
-      window.addEventListener("DOMContentLoaded", function () {
-        const userAgent = navigator.userAgent.toLowerCase();
-
-        const isMobile =
-          /iphone|ipod|android|ios|ipad|windows phone|mobile/i.test(userAgent);
-
-        const deviceType = isMobile ? "mobile" : "pc";
-        const host = window.location.host;
-        const pathname = window.location.pathname;
-
-        if (window.Sentry) {
-          console.log("Sen init success");
-          Sentry.init({
-            dsn: "https://ca254c5714ff4a723a1db3821caa9673@sen.xiaoman.cn/44",
-            integrations: [Sentry.browserTracingIntegration()],
-            environment: "production",
-            sampleRate: 0.1,
-            tracesSampleRate: 0.1,
-            beforeSendTransaction(event) {
-              event.transaction = host;
-              return event;
-            },
-            beforeSend(event) {
-              event.transaction = host;
-              if (host.includes("okkishop.site") || host === "cms.xiaoman.cn") {
-                return null;
-              }
-              return event;
-            },
-          });
-
-          Sentry.setTag("site_id", 95);
-          Sentry.setTag("client_id", 343169);
-          Sentry.setTag("device_type", deviceType);
-          Sentry.setTag("user_agent", navigator.userAgent);
-          Sentry.setTag("host", host);
-          Sentry.setTag("pathname", pathname);
-        } else {
-          console.log("Sen init fail");
-        }
-      });
-    </script>
 
     <script type="text/javascript" src="static/js/jquery.js" defer></script>
     <script type="text/javascript" src="static/js/popper.min.js" defer></script>
@@ -1966,7 +1967,7 @@
               schema.url = fullUrl.replace(/\/index\.html$/, '/') || window.location.origin + '/';
             }
             if (schema.logo === '') {
-              const logoPath = 'static/picture/logo.png';
+              const logoPath = 'static/picture/saint-logo.jpg';
               schema.logo = window.location.origin + (basePath ? basePath + '/' : '/') + logoPath;
             }
             schemaScript.textContent = JSON.stringify(schema, null, 2);
