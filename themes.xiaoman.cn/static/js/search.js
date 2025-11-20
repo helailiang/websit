@@ -38,7 +38,9 @@
         // 高搜索量关键词（基于关键词研究）
         'pva glue', 'pva in glue', 'pva glue glue', 'adhesives pva',
         'pva adhesive', 'pva binder', 'water soluble pva', 'pva polymer',
-        'pva resin', 'polyvinyl alcohol glue', 'pva emulsion', 'pva solution'
+        'pva resin', 'polyvinyl alcohol glue', 'pva emulsion', 'pva solution',
+        // 品牌关键词
+        'Sundy PVA', 'Sinopec PVA'
       ]
     },
     {
@@ -61,6 +63,16 @@
       category: 'Epoxy Resin',
       description: 'High-performance thermosetting resin with excellent mechanical strength and chemical resistance. Used in coatings, composites, and wind power applications.',
       keywords: ['Epoxy', 'Resin', 'thermosetting', 'coatings', 'composites', 'wind power']
+    },
+    {
+      id: 'evoh',
+      name: 'EVOH (Ethylene-Vinyl Alcohol Copolymer)',
+      category: 'Synthetic Resin',
+      description: 'High-barrier resin with excellent gas barrier properties. Used in packaging, automotive fuel tanks, and barrier films. Available from Sinopec.',
+      keywords: [
+        'EVOH', 'Ethylene-Vinyl Alcohol', 'barrier resin', 'gas barrier', 'packaging',
+        'Sinopec EVOH', 'EVOH resin', 'barrier film', 'fuel tank', 'high barrier polymer'
+      ]
     },
     {
       id: 'polyol',
