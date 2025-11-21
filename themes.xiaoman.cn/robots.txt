@@ -12,5 +12,5 @@ Disallow: /*.json$
 Disallow: /*?*keys=*
 
 # Sitemap
-Sitemap: https://helailiang66.top/index.html
+Sitemap: https://helailiang66.top/sitemap.xml
 
